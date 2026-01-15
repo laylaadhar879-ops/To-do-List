@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Gravitas+One&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+/*global styles*/
+
+:root {
+    --primary-color: #56c65a;
+    --secondary-color: #63c6df;
+    --background-color: #f5f5f5;
+    --text-color: #333333;
+    --font-family: 'Nunito', sans-serif;
+    --heading-font-family: 'Gravitas One', cursive;
+}
+
+h1 {
+    font-family: var(--heading-font-family);
+    color: var(--primary-color);
+}
+
+button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: var(--font-family);
+}
