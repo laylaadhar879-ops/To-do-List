@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         listItem.classList.add('list-group-item');
         listItem.innerHTML = `<input type="checkbox" class="checkbox" ${completed ? 'checked' : ''}>
         <span>${taskText}</span><div class="task-btns"><button class="edit-btn"><i class="fas fa-edit"></i></button>
-        <button class="delete-btn"><i class="fas fa-trash-alt"></i></button></div><input type="checkbox" class="checkbox">`;
+        <button class="delete-btn"><i class="fas fa-trash-alt"></i></button></div>`;
 
         //edit and delete button functionality
         const checkbox = listItem.querySelector('.checkbox');
@@ -46,11 +46,58 @@ document.addEventListener('DOMContentLoaded', () => {
             editBtn.style.cursor = isChecked ? 'not-allowed' : 'pointer';
         });
 
-        editBtn.addEventListener('click', () => {
-            if (checkbox.checked) {
-                taskInput.value = listItem.querySelector('span').textContent;
-                taskList.removeChild(listItem);
-                toggleEmptyState();
+        editBtn.addEventListener('click', function handleEdit() {
+            if (!checkbox.checked) {
+                const taskSpan = listItem.querySelector('span');
+                const currentText = taskSpan.textContent;
+                
+                // Create an input field to edit the task
+                const editInput = document.createElement('input');
+                editInput.type = 'text';
+                editInput.value = currentText;
+                editInput.className = 'edit-input';
+                
+                // Replace span with input
+                taskSpan.replaceWith(editInput);
+                editInput.focus();
+                editInput.select();
+                
+                // Change edit button to save button
+                editBtn.innerHTML = '<i class="fas fa-check"></i>';
+                editBtn.removeEventListener('click', handleEdit);
+                
+                // Save on Enter key or clicking save button
+                const saveEdit = () => {
+                    const newText = editInput.value.trim();
+                    if (newText !== '') {
+                        const newSpan = document.createElement('span');
+                        newSpan.textContent = newText;
+                        editInput.replaceWith(newSpan);
+                        editBtn.innerHTML = '<i class="fas fa-edit"></i>';
+                    } else {
+                        // If empty, restore original text
+                        const newSpan = document.createElement('span');
+                        newSpan.textContent = currentText;
+                        editInput.replaceWith(newSpan);
+                        editBtn.innerHTML = '<i class="fas fa-edit"></i>';
+                    }
+                    // Re-attach the edit listener after saving
+                    editBtn.addEventListener('click', handleEdit);
+                };
+                
+                // Save on Enter key
+                editInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        saveEdit();
+                    }
+                });
+                
+                // Save on clicking the save button
+                const saveHandler = () => {
+                    saveEdit();
+                    editBtn.removeEventListener('click', saveHandler);
+                };
+                editBtn.addEventListener('click', saveHandler);
             }
         });
        

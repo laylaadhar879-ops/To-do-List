@@ -169,6 +169,34 @@ body {
     word-wrap: break-word;
 }
 
+#task-list li .edit-input {
+    flex: 1;
+    margin-left: 10px;
+    padding: 0;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    color: var(--secondary-color);
+    font-size: 1rem;
+    font-family: var(--font-family);
+    font-weight: inherit;
+    line-height: 1.5;
+    height: auto;
+    outline: none;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    word-wrap: break-word;
+    display: block;
+    outline: none;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    vertical-align: middle;
+    word-wrap: break-word;
+}
+
+#task-list li .edit-input:focus {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.15);
+}
+
 #task-list li.completed span {
     text-decoration: 2px line-through #000;
     color: gray;
