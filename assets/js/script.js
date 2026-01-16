@@ -1,4 +1,6 @@
+//fetching DOM elements after content is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('themeToggle');
     const taskInput = document.getElementById('task-input');
     const addTaskBtn = document.getElementById('add-task-btn');
     const taskList = document.getElementById('task-list');
@@ -10,8 +12,20 @@ document.addEventListener('DOMContentLoaded', () => {
         toDoContainer.computedStyleMap.width = taskList.children.length === 0 ? '100%' : '50%';
     };
 
-    //function to add a new task
+    //theme toggle functionality
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const icon = themeToggle.querySelector('i');
+        if (document.body.classList.contains('dark-mode')) {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+    });
 
+    //function to add a new task
     const addTask = (text, completed = false) => {
         const taskText = text || taskInput.value.trim();
         if (taskText === '') {
@@ -19,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         //task text and checkbox
-
         const listItem = document.createElement('li');
         listItem.classList.add('list-group-item');
         listItem.innerHTML = `<input type="checkbox" class="checkbox" ${completed ? 'checked' : ''}>
@@ -30,7 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const checkbox = listItem.querySelector('.checkbox');
         const editBtn = listItem.querySelector('.edit-btn');
 
-          if(completed){
+        //if task is completed on load, apply completed styling
+        if (completed) {
             listItem.classList.add('completed');
             editBtn.disabled = true;
             editBtn.style.opacity = 0.5;
@@ -44,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
             editBtn.disabled = isChecked;
             editBtn.style.opacity = isChecked ? 0.5 : 1;
             editBtn.style.cursor = isChecked ? 'not-allowed' : 'pointer';
+            saveTasks();
         });
 
         editBtn.addEventListener('click', function handleEdit() {
@@ -83,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     // Re-attach the edit listener after saving
                     editBtn.addEventListener('click', handleEdit);
+                    saveTasks();
                 };
                 
                 // Save on Enter key
@@ -100,23 +116,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 editBtn.addEventListener('click', saveHandler);
             }
         });
+
+        //deleting task on delete button click
        
         listItem.querySelector('.delete-btn').addEventListener('click', () => {
             taskList.removeChild(listItem);
             toggleEmptyState();
+            saveTasks();
         });
 
         taskList.appendChild(listItem);
         taskInput.value = '';
         toggleEmptyState();
+        saveTasks();
     };
 
     //adds task on button click or enter key press
-
     addTaskBtn.addEventListener('click', () => addTask());
     taskInput.addEventListener('keypress', (event) => {
         if (event.key === 'Enter') {
             addTask();
         }
     });
+
+    //save tasks to local storage
+    const saveTasks = () => {
+        const tasks = Array.from(taskList.querySelectorAll('li')).map((item) => ({
+            text: item.querySelector('span').textContent,
+            completed: item.querySelector('.checkbox').checked
+        }));
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    };
+
+    //restore tasks from local storage on page load
+    const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    savedTasks.forEach(task => addTask(task.text, task.completed));
 });
+

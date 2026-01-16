@@ -25,6 +25,35 @@ body {
     font-family: var(--font-family);
 }
 
+/*theme toggle button styles*/
+
+#themeToggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--secondary-color);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+#themeToggle:hover {
+  transform: scale(1.2);
+}
+
+#unitToggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-right: 1rem;
+  cursor: pointer;
+  color: inherit;
+}
+
 /*container styles*/
 
 .container {
@@ -188,7 +217,6 @@ body {
     display: block;
     outline: none;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-    vertical-align: middle;
     word-wrap: break-word;
 }
 
@@ -227,6 +255,58 @@ body {
     align-items: center;
 }
 
+/*dark mode styles*/
+
+body.dark-mode {
+    background: #1a1a1a url(none);
+    --primary-color: #2a2a2a;
+    --secondary-color: #e0e0e0;
+}
+
+body.dark-mode .to-do {
+    background: rgba(42, 42, 42, 0.9);
+    border: 3px solid rgba(224, 224, 224, 0.2);
+    color: #e0e0e0;
+}
+
+body.dark-mode .to-do h1 {
+    color: #e0e0e0;
+}
+
+body.dark-mode #task-input {
+    background: rgba(60, 60, 60, 0.8);
+    color: #e0e0e0;
+}
+
+body.dark-mode #task-input::placeholder {
+    color: #999999;
+}
+
+body.dark-mode #add-task-btn {
+    color: #e0e0e0;
+}
+
+body.dark-mode #task-list li {
+    background: rgba(60, 60, 60, 0.8);
+    color: #e0e0e0;
+}
+
+body.dark-mode #task-list li .edit-input {
+    background: rgba(80, 80, 80, 0.8);
+    color: #e0e0e0;
+}
+
+body.dark-mode #task-list li .edit-input:focus {
+    background: rgba(100, 100, 100, 0.9);
+}
+
+body.dark-mode .task-btns button {
+    color: #e0e0e0;
+}
+
+body.dark-mode #themeToggle {
+    color: #e0e0e0;
+}
 .task-btns button:hover {
     color: var(--primary-color);
     background-color: var(--secondary-color);
