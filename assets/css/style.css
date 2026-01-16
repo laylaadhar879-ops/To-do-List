@@ -133,7 +133,6 @@ body {
     transition: box-shadow 0.3s ease;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
     color: var(--secondary-color);
 }
 
@@ -148,6 +147,7 @@ body {
   min-height: 20px;
   border: transparent;
   cursor: pointer;
+  margin-left: auto;
   border-radius: 50%;
   transition: all 0.3s ease;
 
@@ -173,45 +173,34 @@ body {
     word-wrap: break-word;
 }
 
-/* Dark mode styles */
+.task-btns {
+    display: flex;
+    gap: 10px;
+    margin-right: auto;
+    margin-left: 15px;
+}
 
-.dark-mode-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
+.task-btns button {
     background: transparent;
-    border: 2px solid var(--secondary-color);
-    color: var(--secondary-color);
-    font-size: 1.5em;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+    border: none;
     cursor: pointer;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    color: var(--secondary-color);
+    font-size: 1rem;
+    transition: color 0.3s ease;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.3s ease;
-    z-index: 100;
 }
 
-.dark-mode-toggle:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0px 15px rgba(0, 0, 0, 0.2);
+.task-btns button:hover {
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    transform: scale(1.2);
 }
 
-body.dark-mode {
-    background: url(https://img.freepik.com/premium-photo/pastel-watercolor-brush-stroke-clipart-background_303085-18696.jpg) no-repeat center center/cover;
-    filter: invert(1) hue-rotate(180deg);
-}
-
-body.dark-mode .to-do {
-    filter: invert(1) hue-rotate(180deg);
-}
-
-body.dark-mode #task-list li {
-    filter: invert(1) hue-rotate(180deg);
-}
-
-body.dark-mode .dark-mode-toggle {
-    filter: invert(1) hue-rotate(180deg);
+.task-btns .edit-btn i{
+    pointer-events: none;
 }

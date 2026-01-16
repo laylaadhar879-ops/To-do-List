@@ -1,21 +1,17 @@
-// Load dark mode preference from localStorage on page load
-if (localStorage.getItem('darkMode') === 'true') {
-    document.body.classList.add('dark-mode');
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     const taskInput = document.getElementById('task-input');
     const addTaskBtn = document.getElementById('add-task-btn');
     const taskList = document.getElementById('task-list');
-    const darkModeBtn = document.getElementById('dark-mode-btn');
+    const toDoContainer = document.querySelector('.box-container');
 
-    // Dark mode toggle
-    if (darkModeBtn) {
-        darkModeBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-        });
-    }
+    //function to adjust empty state display
+
+    const toggleEmptyState = () => {
+        toDoContainer.computedStyleMap.width = taskList.children.length === 0 ? '100%' : '50%';
+    };
+
+    //function to add a new task
+
 
     const addTask = (event) => {
         event.preventDefault();
@@ -24,11 +20,19 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        //checkbox and task text
+        //task text and checkbox
 
         const listItem = document.createElement('li');
         listItem.classList.add('list-group-item');
-        listItem.innerHTML = `<input type="checkbox" class="checkbox"> <span>${taskText}</span>`;
+        listItem.innerHTML = `<span>${taskText}</span><div class="task-btns"><button class="eidt=btn"><i class="fas fa-edit"></i></button>
+        <button class="delete-btn"><i class="fas fa-trash-alt"></i></button></div><input type="checkbox" class="checkbox">`;
+
+        listItem.querySelector('.delete-btn').addEventListener('click', () => {
+            taskList.remove();
+            toggleEmptyState();
+        });
+        
+
         taskList.appendChild(listItem);
         taskInput.value = '';
     };
