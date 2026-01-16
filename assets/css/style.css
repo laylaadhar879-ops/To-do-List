@@ -183,15 +183,6 @@ body {
   transform: scale();
 }
 
-#task-list li .checkbox:checked::before {
-  content: '✓';
-  color: var(--primary-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-}
-
 #task-list li span {
     flex: 1;
     margin-left: 10px;
@@ -315,4 +306,206 @@ body.dark-mode #themeToggle {
 
 .task-btns .edit-btn i{
     pointer-events: none;
+}
+
+/*MEDIA QUERIES */
+
+/* Smartphone (Small devices: 320px - 480px) */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .to-do {
+        padding: 1.5rem;
+        border-radius: 15px;
+        max-width: 95%;
+    }
+
+    .to-do h1 {
+        font-size: 1.5em;
+        padding-top: 10px;
+    }
+
+    #task-form {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    #task-input {
+        flex: 1 1 100%;
+        padding: 8px 15px;
+        font-size: 16px;
+    }
+
+    #add-task-btn {
+        flex: 0 0 auto;
+        margin-left: 0;
+        padding: 8px;
+        font-size: 1rem;
+    }
+
+    #themeToggle {
+        top: 10px;
+        right: 10px;
+        font-size: 1.5rem;
+    }
+
+    .box-container {
+        max-height: 250px;
+        margin-top: 0.5rem;
+    }
+
+    #task-list li {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .task-btns {
+        margin-left: 8px;
+        gap: 8px;
+    }
+
+    .task-btns button {
+        height: 25px;
+        width: 25px;
+        font-size: 0.9rem;
+    }
+
+    #task-list li .checkbox {
+        min-width: 18px;
+        min-height: 18px;
+    }
+}
+
+/* Tablet (Medium devices: 481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .to-do {
+        padding: 1.75rem;
+        border-radius: 18px;
+        max-width: 90%;
+    }
+
+    .to-do h1 {
+        font-size: 1.75em;
+        padding-top: 15px;
+    }
+
+    #task-form {
+        gap: 12px;
+    }
+
+    #task-input {
+        padding: 10px 15px;
+        font-size: 1rem;
+    }
+
+    #add-task-btn {
+        margin-left: 10px;
+        padding: 10px;
+        font-size: 1.1rem;
+    }
+
+    #themeToggle {
+        top: 15px;
+        right: 15px;
+        font-size: 1.6rem;
+    }
+
+    .box-container {
+        max-height: 350px;
+        margin-top: 1rem;
+    }
+
+    #task-list li {
+        padding: 10px 14px;
+        font-size: 0.95rem;
+    }
+
+    .task-btns {
+        margin-left: 12px;
+        gap: 10px;
+    }
+
+    .task-btns button {
+        height: 28px;
+        width: 28px;
+        font-size: 1rem;
+    }
+
+    #task-list li .checkbox {
+        min-width: 19px;
+        min-height: 19px;
+    }
+}
+
+/* Desktop (Large devices: 769px and above) */
+@media (min-width: 769px) {
+    body {
+        padding: 20px;
+    }
+
+    .to-do {
+        padding: 2rem;
+        border-radius: 20px;
+        max-width: 400px;
+    }
+
+    .to-do h1 {
+        font-size: 2em;
+        padding-top: 20px;
+    }
+
+    #task-form {
+        gap: 10px;
+    }
+
+    #task-input {
+        padding: 10px 17px;
+        font-size: 1em;
+    }
+
+    #add-task-btn {
+        margin-left: 10px;
+        padding: 10px;
+        font-size: 1.2em;
+    }
+
+    #themeToggle {
+        top: 20px;
+        right: 20px;
+        font-size: 1.8rem;
+    }
+
+    .box-container {
+        max-height: 300px;
+        margin-top: 1rem;
+    }
+
+    #task-list li {
+        padding: 10px 15px;
+        font-size: 1rem;
+    }
+
+    .task-btns {
+        margin-left: 15px;
+        gap: 10px;
+    }
+
+    .task-btns button {
+        height: 30px;
+        width: 30px;
+        font-size: 1rem;
+    }
+
+    #task-list li .checkbox {
+        min-width: 20px;
+        min-height: 20px;
+    }
 }
