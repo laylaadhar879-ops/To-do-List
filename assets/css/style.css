@@ -136,10 +136,6 @@ body {
     color: var(--secondary-color);
 }
 
-#task-list li:hover {
-    box-shadow: 0 0px 15px rgba(0, 0, 0, 0.2);
-}
-
 /*checkbox styles*/
 
 #task-list li .checkbox {
@@ -172,6 +168,8 @@ body {
     margin-left: 10px;
     word-wrap: break-word;
 }
+
+/*task button styles*/
 
 .task-btns {
     display: flex;
