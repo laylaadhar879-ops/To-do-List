@@ -1,4 +1,4 @@
-//fetching DOM elements after content is loaded
+//fetching DOM elements and initializing event listeners
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('themeToggle');
     const taskInput = document.getElementById('task-input');
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //function to adjust empty state display
 
     const toggleEmptyState = () => {
-        toDoContainer.computedStyleMap.width = taskList.children.length === 0 ? '100%' : '50%';
+        toDoContainer.style.width = taskList.children.length === 0 ? '100%' : '50%';
     };
 
     //theme toggle functionality
@@ -39,17 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <span>${taskText}</span><div class="task-btns"><button class="edit-btn"><i class="fas fa-edit"></i></button>
         <button class="delete-btn"><i class="fas fa-trash-alt"></i></button></div>`;
 
-        //edit and delete button functionality
+        //edit and checkbox elements
         const checkbox = listItem.querySelector('.checkbox');
         const editBtn = listItem.querySelector('.edit-btn');
-
-        //if task is completed on load, apply completed styling
-        if (completed) {
-            listItem.classList.add('completed');
-            editBtn.disabled = true;
-            editBtn.style.opacity = 0.5;
-            editBtn.style.cursor = 'not-allowed';
-        }
 
         //edit button functionality when checkbox is checked
         checkbox.addEventListener('change', () => {
