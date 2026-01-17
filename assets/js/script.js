@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('themeToggle');
     const taskInput = document.getElementById('task-input');
     const addTaskBtn = document.getElementById('add-task-btn');
+    const taskForm = document.getElementById('task-form');
     const taskList = document.getElementById('task-list');
     const toDoContainer = document.querySelector('.box-container');
 
@@ -42,6 +43,15 @@ document.addEventListener('DOMContentLoaded', () => {
         //edit and checkbox elements
         const checkbox = listItem.querySelector('.checkbox');
         const editBtn = listItem.querySelector('.edit-btn');
+
+        //apply completed styling when restoring saved tasks
+        if (completed) {
+            listItem.classList.add('completed');
+            checkbox.checked = true;
+            editBtn.disabled = true;
+            editBtn.style.opacity = 0.5;
+            editBtn.style.cursor = 'not-allowed';
+        }
 
         //edit button functionality when checkbox is checked
         checkbox.addEventListener('change', () => {
@@ -123,12 +133,14 @@ document.addEventListener('DOMContentLoaded', () => {
         saveTasks();
     };
 
-    //adds task on button click or enter key press
-    addTaskBtn.addEventListener('click', () => addTask());
-    taskInput.addEventListener('keypress', (event) => {
-        if (event.key === 'Enter') {
-            addTask();
-        }
+    //adds task on form submit or button click (prevents page reload)
+    taskForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        addTask();
+    });
+    addTaskBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        addTask();
     });
 
     //save tasks to local storage
