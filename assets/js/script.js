@@ -1,11 +1,11 @@
 //fetching DOM elements and initializing event listeners
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", function() {
     const themeToggle = document.getElementById('themeToggle');
     const taskInput = document.getElementById('task-input');
     const addTaskBtn = document.getElementById('add-task-btn');
-    const taskForm = document.getElementById('task-form');
-    const taskList = document.getElementById('task-list');
-    const toDoContainer = document.querySelector('.box-container');
+    const taskForm = document.getElementById("task-form");
+    const taskList = document.getElementById("task-list");
+    const toDoContainer = document.querySelector(".box-container");
 
     //function to adjust empty state display
 
