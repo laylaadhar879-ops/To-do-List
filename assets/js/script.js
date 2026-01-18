@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         newSpan.textContent = newText;
                         editInput.replaceWith(newSpan);
                         editBtn.innerHTML = '<i class="fas fa-edit"></i>';
-                    } else {
+                    }  else {
                         // If empty, restore original text
                         const newSpan = document.createElement('span');
                         newSpan.textContent = currentText;

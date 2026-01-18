@@ -22,8 +22,7 @@ The form input element within the html file allows you to type and submit text. 
 Extracting the trash icon from font Awesome and giving it a funtion to remove the list item when it is clicked.
 
 **Editing Tasks**
-
-
+Editing function allows users to edit the list item and save change by either a click or pressing the enter key, even when the page is refreshed the content that was edited is stored in local storage allowing you to still have access.(AI assisted in completeing the function).
 
 **Bootstrap**
 Using the bootstrap grid i was able to proprly align the content. I implimented the link in the head and body of the html file.
@@ -53,7 +52,6 @@ I was able to prompt AI to manipulate it and use it in order to help me achieve 
 To generate user stories with acceptance citerias and tasks i prompted the following, " I am working on a To-do list app for a project. i am using Html for static structure, Css for styling and Javascript for responsivity. I want the user to be able to be able to add tasks, delete it, edit them and check it off. The user should be able to decide if they want to view the page in dark or light mode. With this information, could you generate user stories with acceptance criterias and tasks in order for me to acheive this."
 
 I was having issues with the edit button and its functions as it was allowing me to edit it but not save the input the user had changed it to. With the help of AI i prompted the following and recieved this solution " When the user tries to edit the list item and submit the chanege it isn,t saving to changes. could you help me fix my code so that when the user edits the listitem and clicks the check the input saves even when the page is refreshed." solution code lines 66 - 120 in Script.js file.
-
 
 ## Validations 
 
