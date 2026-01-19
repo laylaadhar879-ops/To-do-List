@@ -44,16 +44,6 @@ body {
   transform: scale(1.2);
 }
 
-#unitToggle {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-right: 1rem;
-  cursor: pointer;
-  color: inherit;
-}
-
 /*container styles*/
 
 .container {
