@@ -7,12 +7,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const taskList = document.getElementById("task-list");
     const toDoContainer = document.querySelector(".box-container");
 
-    //function to adjust empty state display
-
-    const toggleEmptyState = () => {
-        toDoContainer.style.width = taskList.children.length === 0 ? '100%' : '50%';
-    };
-
     //theme toggle functionality
     themeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
@@ -123,13 +117,11 @@ document.addEventListener("DOMContentLoaded", function() {
        
         listItem.querySelector('.delete-btn').addEventListener('click', () => {
             taskList.removeChild(listItem);
-            toggleEmptyState();
             saveTasks();
         });
 
         taskList.appendChild(listItem);
         taskInput.value = '';
-        toggleEmptyState();
         saveTasks();
     };
 
