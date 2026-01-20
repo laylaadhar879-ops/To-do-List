@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const addTaskBtn = document.getElementById('add-task-btn');
     const taskForm = document.getElementById("task-form");
     const taskList = document.getElementById("task-list");
-    const toDoContainer = document.querySelector(".box-container");
 
     //theme toggle functionality
     themeToggle.addEventListener('click', () => {
