@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        //task text and checkbox
+        //add task item to the list with checkbox, edit and delete buttons
         const listItem = document.createElement('li');
         listItem.classList.add('list-group-item');
         listItem.innerHTML = `<input type="checkbox" class="checkbox" ${completed ? 'checked' : ''}>

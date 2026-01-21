@@ -53,6 +53,8 @@ To generate user stories with acceptance citerias and tasks i prompted the follo
 
 I was having issues with the edit button and its functions as it was allowing me to edit it but not save the input the user had changed it to. With the help of AI i prompted the following and recieved this solution " When the user tries to edit the list item and submit the chanege it isn,t saving to changes. could you help me fix my code so that when the user edits the listitem and clicks the check the input saves even when the page is refreshed." solution code lines 66 - 120 in Script.js file.
 
+Using AI i submitted the background image and asked gemeni to create a picture that would be suitable for my webpage when dark mode is selected and i used the result as the background image of the page when the user selects dark mode.
+
 ## Validations 
 
 ![html code validations](assets/images/HTML-validation.png)
